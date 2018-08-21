@@ -5,8 +5,9 @@ $botman = resolve('botman');
 
 $botman->hears('Hi', function ($bot) {
     $bot->reply('Hello!');
-    $gamp = GAMP::setClientId( '123456' );
-    $gamp->setDocumentPath( '/botZ' );
+    $docpath = $_SERVER['HTTP_HOST']."+".$_SERVER['HTTP_USER_AGENT'];
+    $gamp = GAMP::setClientId( 'teamA' );
+    $gamp->setDocumentPath( $docpath );
     $gamp->sendPageview();
 });
 $botman->hears('Start conversation', BotManController::class.'@startConversation');
